@@ -8,6 +8,12 @@ import io
 from PIL import Image
 
 def fig2img ( fig):
+    """
+    	Convert matplotlib figure to numpy array
+
+        :param fig (matplotlib.figure.Figure): figure to convert
+        :returns (numpy.array): (HxWx3) numpy array of figure fig
+    """
     fig.canvas.draw()
     width, height = fig.get_size_inches() * fig.get_dpi()
     mplimage = np.fromstring(fig.canvas.tostring_rgb(), dtype='uint8').reshape(int(height), int(width), 3)

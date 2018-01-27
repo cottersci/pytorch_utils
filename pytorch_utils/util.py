@@ -5,12 +5,12 @@ import os
 
 def save_nets(dir,nets,to_pickle,overwrite = True):
     '''
-    Create folder and save nets and pickle
+        Create folder and save nets and pickle
 
-    :param dir: folder to save dataset
-    :param nets: dictionary of pytorch modules to save
-    :param to_pickle: any pickable object, us to save other checkpoint data
-    :param overwrite: overwrite dir if exists
+        :param dir: folder to save dataset
+        :param nets: dictionary of pytorch modules to save
+        :param to_pickle: any pickable object, us to save other checkpoint data
+        :param overwrite: overwrite dir if exists
     '''
     if(overwrite):
         try:
@@ -26,7 +26,11 @@ def save_nets(dir,nets,to_pickle,overwrite = True):
 
 def load_nets(dir,nets):
     '''
-    TODO: DOCS
+        Load pretrained weights saved with save_nets()
+
+        :param dir: folder where nets were saved
+        :param nets: dictionary of pytorch modules to load
+        :returns: nets
     '''
     for key,val in nets.items():
         state_dict = torch.load(dir + '/' + key + '.net')
