@@ -1,3 +1,5 @@
+import re
+
 class batcher(object):
     '''
         Wrapper to simplify tracking scalars during batch training.
@@ -28,11 +30,22 @@ class batcher(object):
         except KeyError:
             self.vars[var] = val
 
-    def report(self):
+    def report(self,rexp=None):
         '''
             Print out average values of tracked scalars since last reset()
+
+            :param rexp (String): only print scalars with names matching
+                the regular expression rexp
         '''
+
+        if rexp is not None:
+            p = re.compile(rexp)
+
         for key, val in self.vars.items():
+            if rexp is not None:
+                if not p.match(key):
+                    continue
+
             print(key + ": %.4e, " % (val / self.Nbatch,),end='')
 
     def write(self,summary_writer,epoch):
