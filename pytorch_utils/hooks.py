@@ -13,4 +13,4 @@ def grad_norm(self, grad_input, grad_output):
         print(D.__grad_norm__)
     '''
 
-    self.__grad_norm__ = np.mean([p.data.norm() for p in grad_input])
+    self.__grad_norm__ = np.mean([p.data.norm() for p in grad_input if p is not None])
