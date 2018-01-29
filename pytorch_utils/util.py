@@ -3,7 +3,7 @@ import pickle
 import torch
 import os
 
-def save_nets(dir,nets,to_pickle,overwrite = True):
+def save_nets(dir,nets,to_pickle = None,overwrite = True):
     '''
         Create folder and save nets and pickle
 
@@ -22,7 +22,8 @@ def save_nets(dir,nets,to_pickle,overwrite = True):
     for key,val in nets.items():
         torch.save(val.state_dict(),dir + '/' + key + '.net')
 
-    pickle.dump(to_pickle, open(dir + '/TrainingLog.pkl', 'wb'))
+    if to_pickle is not None:
+        pickle.dump(to_pickle, open(dir + '/TrainingLog.pkl', 'wb'))
 
 def load_nets(dir,nets):
     '''
