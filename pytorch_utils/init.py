@@ -5,7 +5,8 @@ from torchvision import transforms
 
 def parser():
     """
-        Provides a default argument parser that is uversal to all networks
+        Provides a default argument parser including arguments required for
+        most networks
 
         :returns: parser
     """
@@ -19,27 +20,6 @@ def parser():
     par.add_argument('--logdir',default=None, help='Tensorboard log dir')
     par.add_argument('--comment',default='',help='Tensorboard run comment')
     return par
-
-
-def mnist(batch_size,download_loc,train=True,pin_memory=False,download=False):
-    """
-        A default MNIST dataset
-
-        :param train: retun train or test dataset (default is train)
-        :param download_loc: where to download the dataset to
-        :param pin_memory: passed to torchvision.DataLoader
-        :param download: download the dataset
-        :returns: torchvision.DataLoader containing MNIST dataset
-    """
-    dataset = datasets.MNIST(download_loc, train=train, download=download,
-                     transform=transforms.Compose([
-                        transforms.ToTensor(),
-                     ]))
-
-    train_loader = DataLoader(dataset, batch_size=batch_size,
-                                shuffle=True, pin_memory=pin_memory)
-
-    return train_loader
 
 def mnist(batch_size,download_loc,train=True,pin_memory=False,download=False):
     """

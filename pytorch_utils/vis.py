@@ -22,7 +22,7 @@ def fig2img ( fig):
 
 def scatterBWImages(locs,imgs,xlims = (-3,3), ylims = (-3,3)):
     """
-        Plots BW images in imgs at locations locations
+        Plots BW images in imgs at locations locs
 
         :param loc: Lx2 where locs(1,:) = (x,y) is the
             x,y position of image imgs(1)
