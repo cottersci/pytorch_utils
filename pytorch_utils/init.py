@@ -11,11 +11,9 @@ def parser():
         :returns: parser
     """
     par = argparse.ArgumentParser()
-    par.add_argument('z_dim', type=int, help='Z dimension')
     par.add_argument('--batch-size', type=int, default=128, help='input batch size')
     par.add_argument('--save-every', type=int, default=0, help='save checkpoint every N epochs. 0=No save')
     par.add_argument('--no-cuda', action='store_false', help='disables cuda')
-    par.add_argument('--download',action='store_true',help='Download Dataset')
     par.add_argument('--epochs',type=int,default=1e3, help='Number of train epochs')
     par.add_argument('--logdir',default=None, help='Tensorboard log dir')
     par.add_argument('--comment',default='',help='Tensorboard run comment')
