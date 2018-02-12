@@ -57,7 +57,7 @@ def svhn(batch_size,download_loc,train=True,pin_memory=False,download=False):
     else:
         split = 'test'
 
-    dataset = datasets.SVHN('./data', split=split, download=download,
+    dataset = datasets.SVHN(download_loc, split=split, download=download,
                     transform=transforms.Compose([
                        transforms.Resize((28,28)),
                        transforms.Grayscale(),
